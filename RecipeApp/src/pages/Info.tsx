@@ -1,0 +1,39 @@
+import { useEffect,useState } from "react"
+import Navbar from "../components/Navbar"
+import { fetchData } from "../utils/GetterFns"
+import {useParams} from "react-router-dom"
+import InfoHero from "../components/InfoHero"
+import Switcher from "../components/Switcher"
+import SimilarSection from "../components/SimilarSections"
+
+const Info = () => {
+    const [details,setDetails]=useState([])
+    const [similar,setSimilar]=useState([])
+    const {id}=useParams()
+    useEffect(()=>{
+      const fetchDetails=async()=>{
+        const data=await fetchData(`https://api.spoonacular.com/recipes/${id}/information?includeNutrition-true&apiKey=${import.meta.env.VITE_API_KEY}`)
+        const sim=await fetchData(`https://api.spoonacular.com/recipes/${id}/similar?number=8&limitLicense=true&apiKey=${import.meta.env.VITE_API_KEY}`)
+        console.log("data recieved in info",data)
+        console.log("Similar recipes",sim)
+        console.log("")
+        setDetails(data)
+        setSimilar(sim)
+      }
+      fetchDetails()
+      
+       
+    },[id])
+   
+
+  return (
+    <div>
+        <Navbar/>
+        {details && <InfoHero details={details}/>}
+        {details && <Switcher instructions={details.instructions} ingredients={details.extendedIngredients}/>}
+         {similar && <SimilarSection similar={similar} />}
+    </div>
+  )
+}
+
+export default Info

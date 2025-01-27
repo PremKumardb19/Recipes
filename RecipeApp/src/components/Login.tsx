@@ -11,7 +11,7 @@ const Login = ({setIsLogged}) => {
     e.preventDefault();
     
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", {
+      const response = await axios.post("https://recipes-uhra.onrender.com/api/auth/login", {
         email,
         password,
       });

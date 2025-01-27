@@ -9,7 +9,7 @@ const Joke = () => {
     const fetchJoke = async () => {
       const token=localStorage.getItem("token")
       const response = await axios.get("https://official-joke-api.appspot.com/random_joke");
-      let user=await axios.get("http://localhost:5000/api/user/username",
+      let user=await axios.get("https://recipes-uhra.onrender.com/api/user/username",
         {
           headers: {
             Authorization: `Bearer ${token}`, 

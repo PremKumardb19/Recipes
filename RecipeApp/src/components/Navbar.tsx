@@ -2,17 +2,16 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
-const Navbar = ({setIsLogged}) => {
-  const navigate=useNavigate()
-  const token=localStorage.getItem("token")
-  const redirectToHomePage=()=>{
-        localStorage.removeItem("token");
-        console.log("removed token")
-        setIsLogged(false)
-        console.log("navigating")
-        navigate("/")
-        console.log("navigated")
-  }
+const Navbar = ({ setIsLogged }: { setIsLogged: React.Dispatch<React.SetStateAction<boolean>> }) => {
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+
+  const redirectToHomePage = () => {
+    localStorage.removeItem("token");
+    setIsLogged(false);
+    navigate("/");
+  };
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
@@ -30,7 +29,7 @@ const Navbar = ({setIsLogged}) => {
         </button>
         <div
           className="offcanvas offcanvas-end text-bg-dark"
-          tabIndex="-1"
+          tabIndex={-1}
           id="offcanvasNavbar"
           aria-labelledby="offcanvasNavbarLabel"
         >
@@ -46,74 +45,50 @@ const Navbar = ({setIsLogged}) => {
           <div className="offcanvas-body">
             <ul className="navbar-nav ms-auto">
               <li className="nav-item">
-                <HashLink
-                  smooth
-                  to="/#hero"
-                  className="nav-link active mr-lg-2"
-                  aria-current="page"
-                >
+                <HashLink smooth to="/#hero" className="nav-link active mr-lg-2">
                   Home
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink
-                  smooth
-                  to="/#working"
-                  className="nav-link mr-lg-2"
-                >
+                <HashLink smooth to="/#working" className="nav-link mr-lg-2">
                   How it works
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink
-                  smooth
-                  to="/#delivery"
-                  className="nav-link mr-lg-2"
-                >
+                <HashLink smooth to="/#delivery" className="nav-link mr-lg-2">
                   About
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink
-                  smooth
-                  to="/#why"
-                  className="nav-link mr-lg-2"
-                >
+                <HashLink smooth to="/#why" className="nav-link mr-lg-2">
                   Why
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink
-                  smooth
-                  to="/#testimonials"
-                  className="nav-link mr-lg-2"
-                >
+                <HashLink smooth to="/#testimonials" className="nav-link mr-lg-2">
                   FAQs
                 </HashLink>
               </li>
               <li className="nav-item">
-                <HashLink
-                  smooth
-                  to="/#fav"
-                  className="nav-link mr-lg-2"
-                >
+                <HashLink smooth to="/#fav" className="nav-link mr-lg-2">
                   Favourites
                 </HashLink>
               </li>
-              
             </ul>
-           {token?(
-            <button style={{color:"white"}} className="logout ms-auto btn btn-outline-danger rounded-pill px-4 py-1 " onClick={redirectToHomePage}>Logout</button>
-           )
-           : 
-           (<button
-              className="ms-auto btn rounded-pill px-4 py-1 text-white"
-              style={{ backgroundColor: "orangered" 
-                }}
-            >
-              <Link to="/login" className="text-decoration-none text-white"> Login</Link>
-              
-            </button>
+            {token ? (
+              <button
+                style={{ color: "white" }}
+                className="logout ms-auto btn btn-outline-danger rounded-pill px-4 py-1"
+                onClick={redirectToHomePage}
+              >
+                Logout
+              </button>
+            ) : (
+              <button className="ms-auto btn rounded-pill px-4 py-1 text-white" style={{ backgroundColor: "orangered" }}>
+                <Link to="/login" className="text-decoration-none text-white">
+                  Login
+                </Link>
+              </button>
             )}
           </div>
         </div>

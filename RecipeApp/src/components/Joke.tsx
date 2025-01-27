@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios"
+import axios from "axios";
+
 const Joke = () => {
   const [joke, setJoke] = useState("");
-  const [username,setUserName]=useState("")
+  const [username, setUsername] = useState<string>("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchJoke = async () => {
-      const token=localStorage.getItem("token")
+      const token = localStorage.getItem("token");
       const response = await axios.get("https://official-joke-api.appspot.com/random_joke");
-      let user=await axios.get("https://recipes-uhra.onrender.com/api/user/username",
-        {
+      if (token) {
+        const userResponse = await axios.get("http://localhost:5000/api/user/username", {
           headers: {
-            Authorization: `Bearer ${token}`, 
+            Authorization: `Bearer ${token}`,
           },
-        }
-      )
-      user=user.data.user
-      const data=response.data
-      setJoke(data.setup + " " + data.punchline);
-      console.log("USER",user)
-      setUserName(user)
+        });
+        const user = userResponse.data.user;
+        setUsername(user);
+      }
+      setJoke(response.data.setup + " " + response.data.punchline);
       setLoading(false);
     };
 

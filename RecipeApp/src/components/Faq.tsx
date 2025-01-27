@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 
-const FAQ = ({ data, title }) => {
-  const [openIndex, setOpenIndex] = useState(null);
+interface FAQItem {
+  question: string;
+  answer: string;
+}
 
-  const toggleFAQ = (index) => {
+interface FAQProps {
+  data: FAQItem[];
+  title: string;
+}
+
+const FAQ: React.FC<FAQProps> = ({ data, title }) => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
@@ -21,7 +31,7 @@ const FAQ = ({ data, title }) => {
         {data.map((item, index) => (
           <div
             key={index}
-            className={`accordion-item`}
+            className="accordion-item"
             style={{
               borderRadius: "12px",
               marginBottom: "10px",
@@ -51,23 +61,17 @@ const FAQ = ({ data, title }) => {
                   border: "none",
                 }}
               >
-                <span className="me-2">
-                  {String(index + 1).padStart(2, "0")}.
-                </span>
+                <span className="me-2">{String(index + 1).padStart(2, "0")}.</span>
                 {item.question}
                 <i
-                  className={`fas ${
-                    openIndex === index ? "fa-minus" : "fa-plus"
-                  }`}
+                  className={`fas ${openIndex === index ? "fa-minus" : "fa-plus"}`}
                   style={{ fontSize: "1.25rem" }}
                 ></i>
               </button>
             </h2>
             <div
               id={`collapse${index}`}
-              className={`accordion-collapse collapse ${
-                openIndex === index ? "show" : ""
-              }`}
+              className={`accordion-collapse collapse ${openIndex === index ? "show" : ""}`}
               aria-labelledby={`heading${index}`}
             >
               <div

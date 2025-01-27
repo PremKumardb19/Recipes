@@ -10,7 +10,7 @@ const Register = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await axios.post("https://recipes-uhra.onrender.com/api/auth/register", {
         name,

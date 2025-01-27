@@ -2,8 +2,7 @@ import React from "react";
 import { Spinner } from "react-bootstrap";
 
 const InfoHero = ({ details }) => {
-  console.log("at infohero", details);
-  if (details == null) {
+  if (!details) {
     return (
       <div className="container-fluid d-flex justify-content-center align-items-center mt-3">
         <Spinner animation="border" variant="danger" />
@@ -31,7 +30,7 @@ const InfoHero = ({ details }) => {
               textShadow: "2px 2px 8px rgba(0, 0, 0, 0.3)",
             }}
           >
-            {details.title}
+            {details.title || "Unknown Title"}
           </h5>
         </div>
       </div>
@@ -48,8 +47,8 @@ const InfoHero = ({ details }) => {
             onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
           >
             <img
-              src={details.image}
-              alt={details.title}
+              src={details.image || "https://via.placeholder.com/350"}
+              alt={details.title || "Image"}
               className="img-fluid rounded shadow"
               style={{
                 height: "350px",
@@ -78,7 +77,7 @@ const InfoHero = ({ details }) => {
             <div className="card-body p-4">
               <div className="d-flex justify-content-between align-items-center mb-4">
                 <span className="fs-5 fw-bold text-muted">
-                  ⏱ Cooking Time: {details.readyInMinutes} Minutes
+                  ⏱ Cooking Time: {details.readyInMinutes || "N/A"} Minutes
                 </span>
                 <div className="d-flex gap-2">
                   {details.vegetarian ? (
@@ -108,12 +107,13 @@ const InfoHero = ({ details }) => {
                 {details.cuisines && (
                   <li className="list-group-item">
                     <strong>🌍 Cuisines:</strong>{" "}
-                    {details.cuisines.length !== 0 ? details.cuisines.join(", ") : "South Indian"}
+                    {details.cuisines.length ? details.cuisines.join(", ") : "South Indian"}
                   </li>
                 )}
                 {details.diets && (
                   <li className="list-group-item">
-                    <strong>🥗 Diets:</strong> {details.diets.length !== 0 ? details.diets.join(", ") : "Athletic"}
+                    <strong>🥗 Diets:</strong>{" "}
+                    {details.diets.length ? details.diets.join(", ") : "Athletic"}
                   </li>
                 )}
                 {details.servings && (
@@ -141,7 +141,7 @@ const InfoHero = ({ details }) => {
         }}
       >
         <img
-          src={details.image}
+          src={details.image || "https://via.placeholder.com/150"}
           alt="Floating Background"
           className="img-fluid"
           style={{ width: "150%" }}

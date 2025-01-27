@@ -1,11 +1,11 @@
 {
   "name": "recipeapp",
-  "private": "true",
+  "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build", // Skip TypeScript emit (compiling)
+    "build": "tsc --noEmit && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },

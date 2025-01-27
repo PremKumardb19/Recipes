@@ -1,15 +1,18 @@
 import React from "react";
-import Spinner from "react-bootstrap/spinner"
+import { Spinner } from "react-bootstrap";
+
 const InfoHero = ({ details }) => {
-  console.log("at infohero",details)
-  if(details==null){
-    return (<div className="container-fluid d-flex justify-content-center align-items-center mt-3">
-              <Spinner animation="border" variant="danger" /><span className="ms-2">Loading...</span> 
-            </div>
-      )
-      
+  console.log("at infohero", details);
+  if (details == null) {
+    return (
+      <div className="container-fluid d-flex justify-content-center align-items-center mt-3">
+        <Spinner animation="border" variant="danger" />
+        <span className="ms-2">Loading...</span>
+      </div>
+    );
   }
- return (
+
+  return (
     <div
       className="container-fluid py-5 position-relative"
       style={{
@@ -57,8 +60,7 @@ const InfoHero = ({ details }) => {
             <div
               className="position-absolute top-0 start-0 w-100 h-100"
               style={{
-                background:
-                  "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7))",
+                background: "linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,0.7))",
               }}
             ></div>
           </div>
@@ -85,16 +87,12 @@ const InfoHero = ({ details }) => {
                     <span className="badge bg-warning text-white">Non Veg</span>
                   )}
                   {details.sustainable ? (
-                    <span className="badge bg-primary text-white">
-                      Sustainable
-                    </span>
+                    <span className="badge bg-primary text-white">Sustainable</span>
                   ) : (
                     <span className="badge bg-info text-white">Fragile</span>
                   )}
                   {details.veryPopular ? (
-                    <span className="badge bg-warning text-white">
-                      Popular
-                    </span>
+                    <span className="badge bg-warning text-white">Popular</span>
                   ) : (
                     <span className="badge bg-danger text-white">New</span>
                   )}
@@ -104,24 +102,18 @@ const InfoHero = ({ details }) => {
               <ul className="list-group list-group-flush">
                 {details.dishTypes && (
                   <li className="list-group-item">
-                    <strong>🍽 Dish Types:</strong>{" "}
-                    {details.dishTypes.join(", ")}
+                    <strong>🍽 Dish Types:</strong> {details.dishTypes.join(", ")}
                   </li>
                 )}
                 {details.cuisines && (
                   <li className="list-group-item">
                     <strong>🌍 Cuisines:</strong>{" "}
-                    {details.cuisines.length !== 0
-                      ? details.cuisines.join(", ")
-                      : "South Indian"}
+                    {details.cuisines.length !== 0 ? details.cuisines.join(", ") : "South Indian"}
                   </li>
                 )}
                 {details.diets && (
                   <li className="list-group-item">
-                    <strong>🥗 Diets:</strong>{" "}
-                    {details.diets.length !== 0
-                      ? details.diets.join(", ")
-                      : "Athletic"}
+                    <strong>🥗 Diets:</strong> {details.diets.length !== 0 ? details.diets.join(", ") : "Athletic"}
                   </li>
                 )}
                 {details.servings && (
@@ -131,8 +123,7 @@ const InfoHero = ({ details }) => {
                 )}
                 {details.pricePerServing && (
                   <li className="list-group-item">
-                    <strong>💵 Price:</strong> $
-                    {details.pricePerServing.toFixed(2)} / Serving
+                    <strong>💵 Price:</strong> ${details.pricePerServing.toFixed(2)} / Serving
                   </li>
                 )}
               </ul>

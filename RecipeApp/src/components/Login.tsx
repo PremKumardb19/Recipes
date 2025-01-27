@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({setIsLogged}) => {
+const Login = ({ setIsLogged }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    
+
     try {
       const response = await axios.post("https://recipes-uhra.onrender.com/api/auth/login", {
         email,
         password,
       });
-      setIsLogged(true)
+      setIsLogged(true);
       localStorage.setItem("token", response.data.token);
-      
+
       navigate("/");
     } catch (error) {
       console.error("Login error", error);

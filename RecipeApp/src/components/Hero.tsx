@@ -1,13 +1,10 @@
-import img from "../assets/pan2.png";
-import video from "../assets/bgvideo.mp4"; 
 import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
     <div className="hero position-relative d-flex align-items-center justify-content-center text-center text-white" id="hero" style={{ height: "100vh", overflow: "hidden" }}>
-
       <video autoPlay loop muted className="position-absolute w-100 h-100" style={{ objectFit: "cover", zIndex: "-1" }}>
-        <source src={video} type="video/mp4" />
+        <source src="/assets/bgvideo.mp4" type="video/mp4" />
       </video>
       <div className="position-relative">
         <h1 className="fw-bold mb-4" style={{ fontSize: "3rem" }}>

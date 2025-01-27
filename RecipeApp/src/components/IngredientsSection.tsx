@@ -22,7 +22,7 @@ const IngredientsSection = ({ ingredients }) => {
           ingredients.map((ingredient, index) => (
             <div
               className="col-12 col-md-5 col-lg-4"
-              key={ingredient.id}
+              key={ingredient.id || index}  {/* Ensure a fallback key */}
               style={{ perspective: "1000px" }}
             >
               <div
@@ -45,7 +45,7 @@ const IngredientsSection = ({ ingredients }) => {
                 }}
               >
                 <img
-                  src={images[index % images.length]}
+                  src={images[index % images.length] || images[0]}  {/* Fallback image if index is out of bounds */}
                   alt={ingredient.name}
                   className="card-img-top"
                   style={{
@@ -56,7 +56,7 @@ const IngredientsSection = ({ ingredients }) => {
                 />
                 <div className="card-body text-center">
                   <h3
-                    className="card-title  fw-bold"
+                    className="card-title fw-bold"
                     style={{ fontSize: "1.5rem", color: "orangered" }}
                   >
                     {ingredient.name}

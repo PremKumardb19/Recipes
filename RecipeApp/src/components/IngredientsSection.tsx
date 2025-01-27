@@ -6,7 +6,20 @@ import tomato from "../assets/tomato.jpg";
 
 const images = [onion, butter, corianderIn, mushroom, tomato];
 
-const IngredientsSection = ({ ingredients }) => {
+type Ingredient = {
+  id?: string | number;
+  name: string;
+  aisle: string;
+  consistency: string;
+  amount: number;
+  unit: string;
+};
+
+type IngredientsSectionProps = {
+  ingredients: Ingredient[];
+};
+
+const IngredientsSection: React.FC<IngredientsSectionProps> = ({ ingredients }) => {
   return (
     <div className="container my-5">
       <h1
@@ -22,7 +35,7 @@ const IngredientsSection = ({ ingredients }) => {
           ingredients.map((ingredient, index) => (
             <div
               className="col-12 col-md-5 col-lg-4"
-              key={ingredient.id || index}  {/* Ensure a fallback key */}
+              key={ingredient.id || index}
               style={{ perspective: "1000px" }}
             >
               <div
@@ -45,7 +58,7 @@ const IngredientsSection = ({ ingredients }) => {
                 }}
               >
                 <img
-                  src={images[index % images.length] || images[0]}  {/* Fallback image if index is out of bounds */}
+                  src={images[index % images.length] || images[0]}
                   alt={ingredient.name}
                   className="card-img-top"
                   style={{

@@ -7,8 +7,11 @@ const Navbar = ({setIsLogged}) => {
   const token=localStorage.getItem("token")
   const redirectToHomePage=()=>{
         localStorage.removeItem("token");
+        console.log("removed token")
         setIsLogged(false)
+        console.log("navigating")
         navigate("/")
+        console.log("navigated")
   }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">

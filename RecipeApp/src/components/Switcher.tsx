@@ -1,13 +1,13 @@
 import { useState } from "react";
 import Instructions from "./Instructions";
 import IngredientsSection from "./IngredientsSection";
-
 const Switcher = ({ instructions, ingredients }) =>{
   const [show, setShow] = useState(true);
   const styles={
     backgroundImage:"linear-gradient(to right top, #f0630b, #ef5e0e, #ee5810, #ed5213,rgb(255, 67, 4))" 
       
   }
+  
   const toggleShow = () => {
     setShow((show) => !show);
     
@@ -30,6 +30,7 @@ const Switcher = ({ instructions, ingredients }) =>{
                 >
           Instructions
         </span>
+        
       </div>
       <div className="container-fluid">
         {show && ingredients ? (

@@ -20,7 +20,7 @@ const FavMeals = () => {
           `https://api.spoonacular.com/recipes/random?number=4&apiKey=${import.meta.env.VITE_API_KEY}`
         );
         setResults(data.recipes || []);
-        console.log(data.recipes);
+        console.log("top recipes",data.recipes);
       } catch (err) {
         console.error(err);
       } finally {

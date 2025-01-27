@@ -23,7 +23,7 @@ function App() {
           path="/explore"
           element={
             <ProtectedRoute >
-              <Explore />
+              <Explore isLogged={isLogged} setIsLogged={setIsLogged}/>
             </ProtectedRoute>
           }
         />
@@ -31,7 +31,7 @@ function App() {
           path="/info/:id"
           element={
             <ProtectedRoute >
-              <Info />
+              <Info isLogged={isLogged} setIsLogged={setIsLogged}/>
             </ProtectedRoute>
           }
         />

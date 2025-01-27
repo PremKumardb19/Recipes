@@ -6,15 +6,19 @@ import coffee from "../assets/coffee.jpg"
 import icecream from "../assets/icecream.jpg"
 import pizza from "../assets/pizza.jpg"
 import tamilfood from "../assets/tamilfood.jpg"
+import Spinner from "react-bootstrap/Spinner"
 const Cards = ({ results,redirectToInfoPage }) => {
     const images=[chicken65,cappucino,burger,coffee,pizza,tamilfood,icecream]
     console.log("cards rendered",results)
-    if(!results){
-      return <></>
-    }
+   
     return (
       <>
-        { results && results.length === 0 ? (
+        { !results?
+        (
+        <div className="container-fluid d-flex justify-content-center align-items-center mt-3">
+          <Spinner animation="border" variant="danger" /><span className="ms-2">Loading...</span> 
+        </div>
+        ):results && results.length === 0 ? (
           <div style={{ marginTop: "20px", color: "#ff6347" }}>
             <i className="fa fa-search" style={{ fontSize: "30px" }} /> No results
             found.
@@ -48,7 +52,7 @@ const Cards = ({ results,redirectToInfoPage }) => {
                 }}
               >
                 <img
-                  src={result.extendedIngredients?result.image:images[index%(images.length)]}
+                  src={result.extendedIngredients || results.length==4 ||results.length==20?result.image:images[index%(images.length)]}
                   alt={result.title}
                   style={{
                     width: "100%",

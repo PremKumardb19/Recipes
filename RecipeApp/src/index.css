@@ -136,6 +136,11 @@ display:none;
   border-radius: 10px; 
 }
 
+.dish-img{ 
+  height: "600px";
+   width: "50px" ;
+  }
+
 
 .custom-modal-header {
   background-color: #333; 
@@ -186,6 +191,13 @@ display:none;
     .hero-img,.hero-text{
       display:none;
     }
+    .dish-container{
+      width:100% !important;
+    }
+    .dish-img{
+      height:350px;
+      width:100% !important;
+    }
     .small-image{
       display:block;
     }
@@ -196,6 +208,9 @@ display:none;
     .btns{
       margin-bottom:20px;
     }
+    .para{
+      display:none;
+    }
     .delivery-img{
       width:200px;
       height:80px;
@@ -203,7 +218,11 @@ display:none;
     .hero{
       height:1024px;
     }
+    
+    
+    
   }
+
   @media (max-width: 576px) {
     .hero-img {
       display: none; 

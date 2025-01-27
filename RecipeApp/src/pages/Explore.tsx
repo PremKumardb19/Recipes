@@ -2,11 +2,11 @@ import Navbar from "../components/Navbar"
 import SearchBar from "../components/SearchBar"
 
 
-const Explore = () => {
+const Explore = ({isLogged,setIsLogged}) => {
   console.log("Explore rendered")
   return (
     <div>
-        <Navbar/>
+        <Navbar setIsLogged={setIsLogged}/>
         <SearchBar/>
     </div>
   )

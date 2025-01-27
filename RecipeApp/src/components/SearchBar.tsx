@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { fetchData } from "../utils/GetterFns";
 import { useNavigate } from "react-router-dom";
 import Cards from "./Cards"
+import Spinner from "react-bootstrap/Spinner"
 const SearchBar = () => {
   const [search, setSearch] = useState("");
-  const [results, setResults] = useState([]);
+  const [results, setResults] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   console.log("searchbar renderd")
@@ -104,7 +105,10 @@ const SearchBar = () => {
           placeholder="Search for recipes..."
         />
       </div>
-      {results && <Cards results={results} redirectToInfoPage={redirectToInfoPage}/>}
+      {loading && (<div className="container-fluid d-flex justify-content-center align-items-center mt-3">
+              <Spinner animation="border" variant="danger" /><span className="ms-2">Loading...</span> 
+            </div>)}
+    {!loading && <Cards results={results} redirectToInfoPage={redirectToInfoPage}/>}
     
        
       

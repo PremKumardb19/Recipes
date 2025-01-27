@@ -1,7 +1,15 @@
 import React from "react";
-
+import Spinner from "react-bootstrap/spinner"
 const InfoHero = ({ details }) => {
-  return (
+  console.log("at infohero",details)
+  if(details==null){
+    return (<div className="container-fluid d-flex justify-content-center align-items-center mt-3">
+              <Spinner animation="border" variant="danger" /><span className="ms-2">Loading...</span> 
+            </div>
+      )
+      
+  }
+ return (
     <div
       className="container-fluid py-5 position-relative"
       style={{

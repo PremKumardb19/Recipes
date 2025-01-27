@@ -6,9 +6,9 @@ import InfoHero from "../components/InfoHero"
 import Switcher from "../components/Switcher"
 import SimilarSection from "../components/SimilarSections"
 
-const Info = () => {
-    const [details,setDetails]=useState([])
-    const [similar,setSimilar]=useState([])
+const Info = ({isLogged,setIsLogged}) => {
+    const [details,setDetails]=useState(null)
+    const [similar,setSimilar]=useState(null)
     const {id}=useParams()
     useEffect(()=>{
       const fetchDetails=async()=>{
@@ -28,10 +28,10 @@ const Info = () => {
 
   return (
     <div>
-        <Navbar/>
-        {details && <InfoHero details={details}/>}
+        <Navbar setIsLogged={setIsLogged}/>
+        <InfoHero details={details}/>
         {details && <Switcher instructions={details.instructions} ingredients={details.extendedIngredients}/>}
-         {similar && <SimilarSection similar={similar} />}
+        <SimilarSection similar={similar} />
     </div>
   )
 }

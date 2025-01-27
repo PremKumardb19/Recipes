@@ -1,16 +1,17 @@
 {
   "compilerOptions": {
-    "noEmitOnError": false, // Allows the build to continue even if there are TypeScript errors
-    "skipLibCheck": true,    // Skips checking library declaration files
-    "strict": false,         // Disables strict type-checking options
-    "suppressImplicitAnyIndexErrors": true, // Suppresses errors for implicit `any` types on index signatures
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "react-jsx",
+    "moduleResolution": "Node",
+    "strict": true,
     "esModuleInterop": true,
-    "allowJs": true,         // Allows JavaScript files in the project
-    "noUnusedLocals": false, // Disables checking for unused variables
-    "noUnusedParameters": false, // Disables checking for unused function parameters
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "noEmit": true
   },
-  "include": ["src/**/*"],  // Path to the source code
-  "exclude": ["node_modules", "build", "dist"]
+  "include": ["src"]
 }

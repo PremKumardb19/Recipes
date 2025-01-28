@@ -2,12 +2,16 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const Login = ({ setIsLogged }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+interface LoginProps {
+  setIsLogged: (isLogged: boolean) => void;
+}
+
+const Login = ({ setIsLogged }: LoginProps) => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
 
     try {
@@ -19,7 +23,7 @@ const Login = ({ setIsLogged }) => {
       localStorage.setItem("token", response.data.token);
 
       navigate("/");
-    } catch (error) {
+    } catch (error: any) {
       console.error("Login error", error);
       alert("Invalid credentials");
     }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import WorkingSection from "../components/WorkingSection";
@@ -10,7 +10,13 @@ import Faq from "../components/Faq";
 import Joke from "../components/Joke"; 
 import { Modal, Button } from "react-bootstrap";
 
-const Home = ({ isLogged, setIsLogged }) => {
+// Define types for the props
+interface HomeProps {
+  isLogged: boolean;
+  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const Home: React.FC<HomeProps> = ({ isLogged, setIsLogged }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleShowModal = () => setShowModal(true);

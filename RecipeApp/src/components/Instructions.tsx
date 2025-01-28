@@ -5,7 +5,7 @@ interface InstructionStep {
 }
 
 interface InstructionsProps {
-  instructions: string | { steps: string[] | InstructionStep[] };
+  instructions: any; 
 }
 
 const Instructions = ({ instructions }: InstructionsProps) => {
@@ -13,17 +13,17 @@ const Instructions = ({ instructions }: InstructionsProps) => {
     const parser = new DOMParser();
     const doc = parser.parseFromString(htmlString, "text/html");
     const listItems = doc.querySelectorAll("li");
-    return Array.from(listItems).map((li) => li.textContent.trim());
+    return Array.from(listItems).map((li) => li.textContent?.trim());
   };
 
-  const steps =
+  const steps: any = 
     Array.isArray(instructions?.steps)
       ? instructions.steps
       : typeof instructions === "string" && instructions.includes("<")
       ? parseHtmlInstructions(instructions)
       : instructions.split("\n");
 
-  const faqData = steps.map((step, index) => ({
+  const faqData = steps.map((step: any, index: number) => ({
     question: `Step ${index + 1}`,
     answer: typeof step === "string" ? step : step?.step || "No details available",
   }));

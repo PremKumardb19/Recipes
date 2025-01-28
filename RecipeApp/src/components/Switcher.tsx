@@ -2,9 +2,14 @@ import { useState } from "react";
 import Instructions from "./Instructions";
 import IngredientsSection from "./IngredientsSection";
 
+interface Ingredient {
+  name: string;
+  quantity: string;
+}
+
 interface SwitcherProps {
-  instructions: string | null; 
-  ingredients: string | null; 
+  instructions: string | null;
+  ingredients: Ingredient[] | null;
 }
 
 const Switcher = ({ instructions, ingredients }: SwitcherProps) => {

@@ -1,25 +1,31 @@
 import { useState, useEffect } from "react";
 import { fetchData } from "../utils/GetterFns";
 import { useNavigate } from "react-router-dom";
-import Cards from "./Cards"
-import Spinner from "react-bootstrap/Spinner"
+import Cards from "./Cards";
+import Spinner from "react-bootstrap/Spinner";
+
+interface Recipe {
+  id: number; 
+  title: string;
+  
+}
+
 const SearchBar = () => {
-  const [search, setSearch] = useState("");
-  const [results, setResults] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [search, setSearch] = useState<string>("");
+  const [results, setResults] = useState<Recipe[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
   const navigate = useNavigate();
-  console.log("searchbar renderd")
+  console.log("searchbar rendered");
 
   const fetchResults = async () => {
     try {
       setLoading(true);
-     
       const data = await fetchData(
         `https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=20&apiKey=${import.meta.env.VITE_API_KEY}`
       );
       setResults(data.results);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     } finally {
       setLoading(false);
     }
@@ -29,26 +35,23 @@ const SearchBar = () => {
     const fetchRandomRecipes = async () => {
       try {
         setLoading(true);
-        
         const data = await fetchData(
           `https://api.spoonacular.com/recipes/random?number=20&apiKey=${import.meta.env.VITE_API_KEY}`
         );
         setResults(data.recipes);
       } catch (err) {
-        console.log(err)
+        console.log(err);
       } finally {
         setLoading(false);
       }
     };
 
     fetchRandomRecipes();
-  },[]);
+  }, []);
 
-  const redirectToInfoPage = (id) => {
+  const redirectToInfoPage = (id: number) => {
     navigate(`/info/${id}`);
   };
-
-  
 
   return (
     <div
@@ -105,13 +108,13 @@ const SearchBar = () => {
           placeholder="Search for recipes..."
         />
       </div>
-      {loading && (<div className="container-fluid d-flex justify-content-center align-items-center mt-3">
-              <Spinner animation="border" variant="danger" /><span className="ms-2">Loading...</span> 
-            </div>)}
-    {!loading && <Cards results={results} redirectToInfoPage={redirectToInfoPage}/>}
-    
-       
-      
+      {loading && (
+        <div className="container-fluid d-flex justify-content-center align-items-center mt-3">
+          <Spinner animation="border" variant="danger" />
+          <span className="ms-2">Loading...</span>
+        </div>
+      )}
+      {!loading && <Cards results={results} redirectToInfoPage={redirectToInfoPage} />}
     </div>
   );
 };

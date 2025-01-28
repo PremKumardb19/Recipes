@@ -1,22 +1,15 @@
 import { useState } from "react";
 import Instructions from "./Instructions";
 import IngredientsSection from "./IngredientsSection";
-
-interface Ingredient {
-  name: string;
-  quantity: string;
-}
+import { Ingredient } from "./IngredientsSection"
 
 interface SwitcherProps {
   instructions: string | null;
-  ingredients: Ingredient[] | null;
+  ingredients: Ingredient[] | null;  
 }
 
 const Switcher = ({ instructions, ingredients }: SwitcherProps) => {
   const [show, setShow] = useState(true);
-  const styles = {
-    backgroundImage: "linear-gradient(to right top, #f0630b, #ef5e0e, #ee5810, #ed5213, rgb(255, 67, 4))",
-  };
 
   const toggleShow = () => {
     setShow((prevShow) => !prevShow);

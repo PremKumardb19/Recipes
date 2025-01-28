@@ -6,7 +6,7 @@ import tomato from "../assets/tomato.jpg";
 
 const images = [onion, butter, corianderIn, mushroom, tomato];
 
-type Ingredient = {
+export type Ingredient = {
   id?: string | number;
   name: string;
   aisle: string;
@@ -15,19 +15,14 @@ type Ingredient = {
   unit: string;
 };
 
-type IngredientsSectionProps = {
+export type IngredientsSectionProps = {
   ingredients: Ingredient[];
 };
 
 const IngredientsSection: React.FC<IngredientsSectionProps> = ({ ingredients }) => {
   return (
     <div className="container my-5">
-      <h1
-        className="text-center mb-5 display-4 fw-bold"
-        style={{
-          color: "orangered",
-        }}
-      >
+      <h1 className="text-center mb-5 display-4 fw-bold" style={{ color: "orangered" }}>
         Ingredients
       </h1>
       <div className="row justify-content-center g-4">
@@ -48,13 +43,11 @@ const IngredientsSection: React.FC<IngredientsSectionProps> = ({ ingredients }) 
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = "rotateY(5deg) scale(1.05)";
-                  e.currentTarget.style.boxShadow =
-                    "0 15px 30px rgba(0, 0, 0, 0.3)";
+                  e.currentTarget.style.boxShadow = "0 15px 30px rgba(0, 0, 0, 0.3)";
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = "rotateY(0deg) scale(1)";
-                  e.currentTarget.style.boxShadow =
-                    "0 8px 15px rgba(0, 0, 0, 0.1)";
+                  e.currentTarget.style.boxShadow = "0 8px 15px rgba(0, 0, 0, 0.1)";
                 }}
               >
                 <img
@@ -68,10 +61,7 @@ const IngredientsSection: React.FC<IngredientsSectionProps> = ({ ingredients }) 
                   }}
                 />
                 <div className="card-body text-center">
-                  <h3
-                    className="card-title fw-bold"
-                    style={{ fontSize: "1.5rem", color: "orangered" }}
-                  >
+                  <h3 className="card-title fw-bold" style={{ fontSize: "1.5rem", color: "orangered" }}>
                     {ingredient.name}
                   </h3>
                   <p className="card-text text-secondary fw-medium mb-2">

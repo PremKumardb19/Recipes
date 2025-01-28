@@ -8,7 +8,6 @@ import Testimonials from "../components/Testimonials";
 import FavMeals from "../components/FavMeals";
 import Faq from "../components/Faq";
 import Joke from "../components/Joke"; 
-import data from "../data/data";
 import { Modal, Button } from "react-bootstrap";
 
 const Home = ({ isLogged, setIsLogged }) => {
@@ -16,6 +15,24 @@ const Home = ({ isLogged, setIsLogged }) => {
 
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
+
+  const faqData = [
+    {
+      question: "How does Gusto meal kit delivery service work?",
+      answer:
+        "Our meal delivery service allows you to skip meal planning and grocery shopping. Gusto delivers step-by-step recipes and fresh, pre-portioned ingredients.",
+    },
+    {
+      question: "How much does Gusto cost?",
+      answer:
+        "The cost depends on the plan you choose, starting as low as $7.49 per serving.",
+    },
+    {
+      question: "Why choose Gusto for your meal kit service?",
+      answer:
+        "Gusto offers flexible plans, a variety of recipes, and fresh, quality ingredients delivered to your door.",
+    },
+  ];
 
   return (
     <>
@@ -38,7 +55,7 @@ const Home = ({ isLogged, setIsLogged }) => {
       <WhySection />
       <FavMeals />
       <Testimonials />
-      <Faq data={data} title="FAQs"/>
+      <Faq data={faqData} title="FAQs"/>
       <Modal
         show={showModal}
         onHide={handleCloseModal}
@@ -49,11 +66,11 @@ const Home = ({ isLogged, setIsLogged }) => {
         className="custom-modal"
       >
         <Modal.Header
-        className="d-flex flex-row justify-content-between"
+          className="d-flex flex-row justify-content-between"
           style={{
             backgroundColor: "black"
           }}
-         >
+        >
           <Modal.Title>🎉 Fun Section!</Modal.Title>
           <button
             type="button"

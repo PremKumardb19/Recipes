@@ -1,7 +1,7 @@
 import React from "react";
 import { Spinner } from "react-bootstrap";
 
-const InfoHero = ({ details }) => {
+const InfoHero = ({ details }: { details: any }) => {
   if (!details) {
     return (
       <div className="container-fluid d-flex justify-content-center align-items-center mt-3">

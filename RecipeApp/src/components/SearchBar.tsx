@@ -4,18 +4,23 @@ import { useNavigate } from "react-router-dom";
 import Cards from "./Cards";
 import Spinner from "react-bootstrap/Spinner";
 
-interface Recipe {
-  id: number; 
+interface Result {
+  id: string;
   title: string;
-  
+  image: string;
+}
+
+interface Recipe {
+  id: number;
+  title: string;
+  imageUrl: string;
 }
 
 const SearchBar = () => {
-  const [search, setSearch] = useState<string>("");
-  const [results, setResults] = useState<Recipe[] | null>(null);
-  const [loading, setLoading] = useState<boolean>(false);
+  const [search, setSearch] = useState("");
+  const [results, setResults] = useState<Result[] | null>(null);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  console.log("searchbar rendered");
 
   const fetchResults = async () => {
     try {
@@ -23,7 +28,12 @@ const SearchBar = () => {
       const data = await fetchData(
         `https://api.spoonacular.com/recipes/complexSearch?query=${search}&number=20&apiKey=${import.meta.env.VITE_API_KEY}`
       );
-      setResults(data.results);
+      const mappedResults = data.results.map((recipe: Recipe) => ({
+        id: recipe.id.toString(),
+        title: recipe.title,
+        image: recipe.imageUrl,
+      }));
+      setResults(mappedResults);
     } catch (err) {
       console.log(err);
     } finally {
@@ -38,18 +48,22 @@ const SearchBar = () => {
         const data = await fetchData(
           `https://api.spoonacular.com/recipes/random?number=20&apiKey=${import.meta.env.VITE_API_KEY}`
         );
-        setResults(data.recipes);
+        const mappedResults = data.recipes.map((recipe: Recipe) => ({
+          id: recipe.id.toString(),
+          title: recipe.title,
+          image: recipe.imageUrl,
+        }));
+        setResults(mappedResults);
       } catch (err) {
         console.log(err);
       } finally {
         setLoading(false);
       }
     };
-
     fetchRandomRecipes();
   }, []);
 
-  const redirectToInfoPage = (id: number) => {
+  const redirectToInfoPage = (id: string) => {
     navigate(`/info/${id}`);
   };
 

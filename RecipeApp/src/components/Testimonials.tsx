@@ -19,7 +19,8 @@ const Testimonials = () => {
                 <motion.p
                   className="stats fs-3 fw-medium mb-0"
                   style={{ color: "orangered" }}
-                  animate={{ count: 15000 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 2 }}
                 >
                   15k+
@@ -30,7 +31,8 @@ const Testimonials = () => {
                 <motion.p
                   className="stats fs-3 fw-medium mb-0"
                   style={{ color: "orangered" }}
-                  animate={{ count: 17 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 2 }}
                 >
                   17+
@@ -41,7 +43,8 @@ const Testimonials = () => {
                 <motion.p
                   className="stats fs-3 fw-medium mb-0"
                   style={{ color: "orangered" }}
-                  animate={{ count: 30 }}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: 2 }}
                 >
                   30+

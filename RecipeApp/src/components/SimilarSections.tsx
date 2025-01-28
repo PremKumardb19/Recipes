@@ -2,8 +2,14 @@ import { useNavigate } from "react-router-dom";
 import Cards from "./Cards";
 import Spinner from "react-bootstrap/Spinner";
 
+interface Result {
+  id: string;
+  title: string;
+  image: string;
+}
+
 interface SimilarSectionProps {
-  similar: { id: number; title: string }[] | null; // Adjust this type based on the shape of `similar`
+  similar: { id: number; title: string; imageUrl: string }[] | null;
 }
 
 const SimilarSection = ({ similar }: SimilarSectionProps) => {
@@ -12,11 +18,17 @@ const SimilarSection = ({ similar }: SimilarSectionProps) => {
   }
 
   const navigate = useNavigate();
-  const redirectToInfoPage = (id: number) => {
+  const redirectToInfoPage = (id: string) => {
     navigate(`/info/${id}`);
   };
 
-  console.log("SIMIlar section rendered", similar);
+  const mappedSimilar = similar.map((item) => ({
+    id: item.id.toString(),
+    title: item.title,
+    image: item.imageUrl,
+  }));
+
+  console.log("Similar section rendered", mappedSimilar);
 
   return (
     <div className="container-fluid mt-4">
@@ -24,7 +36,7 @@ const SimilarSection = ({ similar }: SimilarSectionProps) => {
         <h1 className="fs-2 fw-bold card-title text-center" style={{ color: "orangered" }}>
           Similar Recipes
         </h1>
-        {similar && <Cards results={similar} redirectToInfoPage={redirectToInfoPage} />}
+        {mappedSimilar.length > 0 && <Cards results={mappedSimilar} redirectToInfoPage={redirectToInfoPage} />}
       </div>
     </div>
   );

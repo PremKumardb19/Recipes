@@ -32,13 +32,13 @@ export const SearchIcon=styled.i`
 `
 
 export const SearchInput=styled.input`
-            backgroundColor: #ffffff;
+            background-color: #ffffff;
             color: #333;
             border: 1px solid #ff6347;
             border-radius: 25px;
             padding: 12px 45px;
-            fontSize: 16px;
-            boxShadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: box-shadow 0.3s;
             width: 100%;
           

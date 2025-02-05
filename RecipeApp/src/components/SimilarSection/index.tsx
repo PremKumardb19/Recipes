@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import Cards from "./Cards";
+import Cards from "../Cards";
 import Spinner from "react-bootstrap/Spinner";
+import { SimilarSectionHeading } from "./styles";
 
 interface Result {
   id: string;
@@ -33,9 +34,9 @@ const SimilarSection = ({ similar }: SimilarSectionProps) => {
   return (
     <div className="container-fluid mt-4">
       <div className="cards-container">
-        <h1 className="fs-2 fw-bold card-title text-center" style={{ color: "orangered" }}>
+        <SimilarSectionHeading className="fs-2 fw-bold card-title text-center" >
           Similar Recipes
-        </h1>
+        </SimilarSectionHeading>
         {mappedSimilar.length > 0 && <Cards results={mappedSimilar} redirectToInfoPage={redirectToInfoPage} />}
       </div>
     </div>

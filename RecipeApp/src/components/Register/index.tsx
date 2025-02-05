@@ -1,16 +1,24 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
+import React,{useEffect} from "react";
+import {useAuthStore} from "../../store/AuthStore"
+import { useNavigate,Link } from "react-router-dom";
 import axios from "axios";
+import { useDataStore } from "../../store/DataStore";
 
 const Register = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const {name,setName,email,setEmail,password,setPassword}=useAuthStore()
+  const {loading,setLoading}=useDataStore()
   const navigate = useNavigate();
+  
+  useEffect(()=>{
+    setName("")
+    setEmail("")
+    setPassword("")
+  },[])
 
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setLoading(true)
     try {
       const response = await axios.post("https://recipes-uhra.onrender.com/api/auth/register", {
         name,
@@ -21,6 +29,9 @@ const Register = () => {
     } catch (error) {
       console.error("Registration error", error);
       alert("Registration failed. Please try again.");
+    }
+    finally{
+       setLoading(false);
     }
   };
 
@@ -59,11 +70,11 @@ const Register = () => {
           />
         </div>
         <button type="submit" className="btn btn-danger w-100">
-          Let’s Get Cooking!
+          {loading?"Loading...":"Let’s Get Cooking!"}
         </button>
       </form>
       <p className="text-center mt-3">
-        Already have an account? <a href="/login">Login</a>
+        Already have an account? <Link to="/login">Login</Link>
       </p>
     </div>
   );

@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
+import { ArrowIcon, InnerContainer, QuestionSpan, TestimonailCard, TestimonailsDiv } from "./styles";
 
 const Testimonials = () => {
   return (
-    <div className="container-fluid mb-5 pb-5" style={{ backgroundColor: "black" }} id="testimonials">
+    <TestimonailsDiv className="container-fluid mb-5 pb-5"  id="testimonials">
       <div className="mx-auto w-70">
         <div className="row d-flex align-items-center">
-          <div className="col-md-6 inner-container" style={{ height: "100%" }}>
+          <InnerContainer className="col-md-6 inner-container" >
             <h2 className="section-title">
-              What Our Client Say <span style={{ color: "orangered" }}>?</span>
+              What Our Client Say <QuestionSpan>?</QuestionSpan>
             </h2>
             <div className="mb-4">
               <p className="text-white">
@@ -52,7 +53,7 @@ const Testimonials = () => {
                 <p>Food Menu</p>
               </div>
             </div>
-          </div>
+          </InnerContainer>
           <div className="col-md-6">
             <div className="carousel-wrapper mt-5">
               <div
@@ -65,7 +66,7 @@ const Testimonials = () => {
                   <div className="carousel-item active">
                     <div className="row g-4">
                       <div className="col-12 col-md-6">
-                        <div className="testimonial card px-4 p-5" style={{ height: "320px" }}>
+                        <TestimonailCard className="testimonial card px-4 p-5">
                           <div className="d-flex align-items-center mb-3">
                             <img
                               src="https://picsum.photos/100"
@@ -83,10 +84,10 @@ const Testimonials = () => {
                             "Your recipes are quick and easy to follow... Thanks for giving my family
                             the gift of a relaxed Mom and delicious food!"
                           </p>
-                        </div>
+                        </TestimonailCard>
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="testimonial card px-4 p-5" style={{ height: "320px" }}>
+                        <TestimonailCard className="testimonial card px-4 p-5" >
                           <div className="d-flex align-items-center mb-3">
                             <img
                               src="https://picsum.photos/101"
@@ -101,14 +102,14 @@ const Testimonials = () => {
                             </div>
                           </div>
                           <p>"Wow! The chef meals hit home. It's a pleasure to face the pressure of what to shop."</p>
-                        </div>
+                        </TestimonailCard>
                       </div>
                     </div>
                   </div>
                   <div className="carousel-item">
                     <div className="row g-4">
                       <div className="col-12 col-md-6">
-                        <div className="testimonial card px-4 p-5" style={{ height: "320px" }}>
+                        <TestimonailCard className="testimonial card px-4 p-5" >
                           <div className="d-flex align-items-center mb-3">
                             <img
                               src="https://picsum.photos/102"
@@ -123,10 +124,10 @@ const Testimonials = () => {
                             </div>
                           </div>
                           <p>"The meals are super delicious and easy to prepare. My family loves it!"</p>
-                        </div>
+                        </TestimonailCard>
                       </div>
                       <div className="col-12 col-md-6">
-                        <div className="testimonial card px-4 p-5" style={{ height: "320px" }}>
+                        <TestimonailCard className="testimonial card px-4 p-5" >
                           <div className="d-flex align-items-center mb-3">
                             <img
                               src="https://picsum.photos/103"
@@ -141,7 +142,7 @@ const Testimonials = () => {
                             </div>
                           </div>
                           <p>"Highly recommend these meals. Perfect for my busy schedule!"</p>
-                        </div>
+                        </TestimonailCard>
                       </div>
                     </div>
                   </div>
@@ -153,7 +154,7 @@ const Testimonials = () => {
                     data-bs-target="#testimonialCarousel"
                     data-bs-slide="prev"
                   >
-                    <i className="fas fa-arrow-left" style={{ color: "orangered", fontSize: "20px" }}></i>
+                    <ArrowIcon className="fas fa-arrow-left" ></ArrowIcon>
                   </button>
                   <button
                     className="btn btn-dark"
@@ -161,7 +162,7 @@ const Testimonials = () => {
                     data-bs-target="#testimonialCarousel"
                     data-bs-slide="next"
                   >
-                    <i className="fas fa-arrow-right" style={{ color: "orangered", fontSize: "20px" }}></i>
+                    <ArrowIcon className="fas fa-arrow-right" ></ArrowIcon>
                   </button>
                 </div>
               </div>
@@ -169,7 +170,7 @@ const Testimonials = () => {
           </div>
         </div>
       </div>
-    </div>
+    </TestimonailsDiv>
   );
 };
 

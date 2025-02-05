@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { RoundedDiv, WhyDiv } from "./styles";
 
 const WhySection = () => {
   return (
@@ -32,23 +33,18 @@ const WhySection = () => {
               }}
               viewport={{ amount: 0.2 }}
             >
-              <div
+              <WhyDiv
                 className="d-flex flex-column align-items-center text-center"
-                style={{ gap: "10px" }}
+                
               >
-                <div
+                <RoundedDiv
                   className="rounded-circle d-flex justify-content-center align-items-center"
-                  style={{
-                    height: "70px",
-                    width: "70px",
-                    backgroundColor: "white",
-                    color: "orangered",
-                  }}
+                  
                 >
                   <i className={`fa ${item.icon} fs-4`}></i>
-                </div>
+                </RoundedDiv>
                 <p className="text-white fs-5">{item.text}</p>
-              </div>
+              </WhyDiv>
             </motion.div>
           ))}
         </div>

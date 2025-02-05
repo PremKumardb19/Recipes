@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import Cards from "./Cards";
-import { fetchData } from "../utils/GetterFns";
+import Cards from "../Cards";
+import { fetchData } from "../../utils/GetterFns";
 import { Link, useNavigate } from "react-router-dom";
+import { useDataStore } from "../../store/DataStore";
+import { FavMealsButton } from "./styles";
 
 const FavMeals = () => {
-  const [loading, setLoading] = useState(false);
-  const [results, setResults] = useState([]);
+  const {loading,setLoading,TopPicks:results,setTopPicks:setResults}=useDataStore()
   const navigate = useNavigate();
 
   const redirectToInfoPage = (id: any) => {
@@ -40,7 +41,7 @@ const FavMeals = () => {
         <>
          <Cards results={results} redirectToInfoPage={redirectToInfoPage} />
         <div className="d-flex justify-content-center mt-3">
-        <button className="rounded px-3 py-3 text-white" style={{backgroundColor:"orangered",border:'none'}}><Link to="/explore" className="text-decoration-none text-white">View Menu</Link></button>
+        <FavMealsButton className="rounded px-3 py-3 text-white" ><Link to="/explore" className="text-decoration-none text-white">View Menu</Link></FavMealsButton>
         </div>
         </>
       ) : (

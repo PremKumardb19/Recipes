@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import WorkingSection from "../components/WorkingSection";
@@ -9,19 +9,16 @@ import FavMeals from "../components/FavMeals";
 import Faq from "../components/Faq";
 import Joke from "../components/Joke"; 
 import { Modal, Button } from "react-bootstrap";
+import { useAuthStore } from "../store/AuthStore";
 
-// Define types for the props
-interface HomeProps {
-  isLogged: boolean;
-  setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
-}
 
-const Home: React.FC<HomeProps> = ({ isLogged, setIsLogged }) => {
-  const [showModal, setShowModal] = useState(false);
 
+const Home: React.FC = () => {
+  const {showModal,setShowModal}=useAuthStore()
+  const {isLogged,setIsLogged}=useAuthStore()
   const handleShowModal = () => setShowModal(true);
   const handleCloseModal = () => setShowModal(false);
-
+  const token=localStorage.getItem("token")
   const faqData = [
     {
       question: "How does Gusto meal kit delivery service work?",
@@ -39,12 +36,12 @@ const Home: React.FC<HomeProps> = ({ isLogged, setIsLogged }) => {
         "Gusto offers flexible plans, a variety of recipes, and fresh, quality ingredients delivered to your door.",
     },
   ];
-
+  
   return (
     <>
-      <Navbar setIsLogged={setIsLogged} />
+      <Navbar />
       <Hero />
-      {isLogged && (
+      {token && (
         <Button
           style={{
             backgroundColor: "orangered",

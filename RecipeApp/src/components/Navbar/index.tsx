@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
+import { useAuthStore } from "../../store/AuthStore";
 
-const Navbar = ({ setIsLogged }: { setIsLogged: React.Dispatch<React.SetStateAction<boolean>> }) => {
+const Navbar = () => {
   const navigate = useNavigate();
+  const {setIsLogged}=useAuthStore()
   const token = localStorage.getItem("token");
 
   const redirectToHomePage = () => {
@@ -57,6 +59,11 @@ const Navbar = ({ setIsLogged }: { setIsLogged: React.Dispatch<React.SetStateAct
               <li className="nav-item">
                 <HashLink smooth to="/#delivery" className="nav-link mr-lg-2">
                   About
+                </HashLink>
+              </li>
+              <li className="nav-item">
+                <HashLink smooth to="/explore" className="nav-link mr-lg-2">
+                  Explore
                 </HashLink>
               </li>
               <li className="nav-item">

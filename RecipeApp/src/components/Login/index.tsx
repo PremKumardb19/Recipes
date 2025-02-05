@@ -1,19 +1,18 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate,Link } from "react-router-dom";
 import axios from "axios";
+import { useAuthStore } from "../../store/AuthStore";
+import { useDataStore } from "../../store/DataStore";
 
-interface LoginProps {
-  setIsLogged: (isLogged: boolean) => void;
-}
 
-const Login = ({ setIsLogged }: LoginProps) => {
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
+const Login = () => {
+  const {email,setEmail,password,setPassword,setIsLogged}=useAuthStore()
+  const {loading,setLoading}=useDataStore()
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       const response = await axios.post("https://recipes-uhra.onrender.com/api/auth/login", {
         email,
@@ -26,6 +25,9 @@ const Login = ({ setIsLogged }: LoginProps) => {
     } catch (error: any) {
       console.error("Login error", error);
       alert("Invalid credentials");
+    }
+    finally{
+      setLoading(false);
     }
   };
 
@@ -54,12 +56,13 @@ const Login = ({ setIsLogged }: LoginProps) => {
           />
         </div>
         <button type="submit" className="btn btn-danger w-100">
-          Let’s Cook!
+          {!loading?"Let’s Cook!":"Loading..."}
         </button>
       </form>
-      <p className="text-center mt-3">
-        Don't have an account? <a href="/register">Register</a>
-      </p>
+        <p className="text-center mt-3">
+          Don't have an account? <Link to="/register">Register</Link> 
+        </p>
+     
     </div>
   );
 };

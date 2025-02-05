@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import logo from "../assets/chefLogo.jpg";
-import coriander from "../assets/coriander.jpg";
-import dish from "../assets/food-cropped-final.png";
+import logo from "../../assets/chefLogo.jpg";
+import coriander from "../../assets/coriander.jpg";
+import dish from "../../assets/food-cropped-final.png";
+import { CertificationLogo, CertificationText } from "./styles";
 
 const DeliverySection = () => {
   return (
@@ -56,14 +57,14 @@ const DeliverySection = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.5, delay: 1 }}
           >
-            <p className="mt-2" style={{ fontFamily: "cursive" }}>
+            <CertificationText className="mt-2" >
               Certified By:
-            </p>
-            <img
+            </CertificationText>
+            <CertificationLogo
               src={logo}
               alt="Certification Logo"
               className="ms-2"
-              style={{ height: "50px", width: "50px", borderRadius: "50%" }}
+              
             />
           </motion.div>
 

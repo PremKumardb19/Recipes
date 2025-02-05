@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useDataStore } from "../../store/DataStore";
 
 const Joke = () => {
-  const [joke, setJoke] = useState("");
-  const [username, setUsername] = useState<string>("");
-  const [loading, setLoading] = useState(true);
+  const {joke,setJoke,username,setUsername,loading,setLoading}=useDataStore()
 
   useEffect(() => {
     const fetchJoke = async () => {
       const token = localStorage.getItem("token");
+      setLoading(true)
       const response = await axios.get("https://official-joke-api.appspot.com/random_joke");
+      
       if (token) {
-        const userResponse = await axios.get("http://localhost:5000/api/user/username", {
+        const userResponse = await axios.get("https://recipes-uhra.onrender.com/api/user/username", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -28,6 +29,8 @@ const Joke = () => {
 
   return (
     <div className="fun-section d-flex flex-column align-items-center justify-content-center min-vh-100 text-center">
+      {loading?<p className="text-white">Loading...</p>
+      :<>
       <div className="mb-5 animate__animated animate__fadeIn animate__delay-1s">
         <h1 className="display-3 text-orangered">
           🌟 Welcome to the Fun Zone, {username && <strong>{username}</strong>}! 🎉
@@ -58,6 +61,7 @@ const Joke = () => {
           <span className="emoji">🔥</span>
         </div>
       </div>
+      </>}
     </div>
   );
 };

@@ -1,8 +1,8 @@
-import onion from "../assets/onion.jpg";
-import butter from "../assets/butter.jpg";
-import corianderIn from "../assets/corianderIn.jpg";
-import mushroom from "../assets/mushroom.jpg";
-import tomato from "../assets/tomato.jpg";
+import onion from "../../assets/onion.jpg";
+import butter from "../../assets/butter.jpg";
+import corianderIn from "../../assets/corianderIn.jpg";
+import mushroom from "../../assets/mushroom.jpg";
+import tomato from "../../assets/tomato.jpg";
 
 const images = [onion, butter, corianderIn, mushroom, tomato];
 

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import cover1 from "../assets/c1.png";
-import cover2 from "../assets/c2.png";
-import cover3 from "../assets/c3.png";
+import cover1 from "../../assets/c1.png";
+import cover2 from "../../assets/c2.png";
+import cover3 from "../../assets/c3.png";
 
 const WorkingSection = () => {
   const cardVariants = {
